@@ -22,18 +22,9 @@ namespace Recipe.Common.Database
         {
 
         }
-        //Database Configure
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //DatabaseCfg cfg = new DatabaseCfg();
-            //if (File.Exists(Directory.GetCurrentDirectory() + "\\cfg.json"))
-            //{
-            //    using (var r = new StreamReader(Directory.GetCurrentDirectory() + "\\cfg.json"))
-            //    {
-            //        var json = r.ReadToEnd();
-            //        cfg = JsonConvert.DeserializeObject<DatabaseCfg>(json);
-            //    }
-            //}
             var connectionString = "Data Source = " + Directory.GetCurrentDirectory() + "\\Data.db";
             optionsBuilder.UseSqlite(connectionString);
         }
