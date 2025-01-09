@@ -1,0 +1,45 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Recipe"
+                    xmlns:v="clr-namespace:Recipe.View"
+                    xmlns:vm="clr-namespace:Recipe.ViewModel"
+                    >
+
+    <DataTemplate DataType="{x:Type vm:MainViewModel}">
+        <v:MainView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:RecipeViewModel}">
+        <v:RecipeView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ProjectViewModel}">
+        <v:ProjectView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:StackViewModel}">
+        <v:StackView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ArchitectureViewModel}">
+        <v:ArchitectureView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:FunctionViewModel}">
+        <v:FunctionView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:DBViewModel}">
+        <v:DBView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:OutcomeViewModel}">
+        <v:OutcomeView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ClosingViewModel}">
+        <v:ClosingView />
+    </DataTemplate>
+
+
+</ResourceDictionary>

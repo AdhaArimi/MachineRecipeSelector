@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="Recipe.View.RecipeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:Recipe"
+        mc:Ignorable="d" MinHeight="810" MinWidth="1440">
+
+    <UserControl.Resources>
+        <!-- This style is used for buttons, to remove the WPF default 'animated' mouse over effect -->
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                        BorderThickness="0"
+                        Background="Transparent">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <ListBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Stretch" Margin="20,0,20,0" IsTabStop="False" Focusable="False"  ItemsSource="{Binding RecipeAvbList}" SelectedItem="{Binding SelectedRecipe}">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="BorderBrush" Value="Gray"/>
+                    <Setter Property="Padding" Value="4,10,4,10"/>
+                    <Setter Property="FontSize" Value="20"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+
+        <Label Content="Demo" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="50"/>
+        
+        <xctk:PropertyGrid FontSize="20" Background="White" BorderBrush="Gray" BorderThickness="1" ShowSearchBox="False" ShowAdvancedOptions="False" ShowDescriptionByTooltip="False" ShowSortOptions="False" ShowTitle="False" ShowSummary="False" Margin="0,0,20,0" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" SelectedObject="{Binding RecipeList, Mode=TwoWay}" IsReadOnly="False"/>
+
+        <Button Content="Load" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="4" HorizontalAlignment="Stretch" Margin="20,0,10,0" Command="{Binding CmdLoad}" VerticalAlignment="Bottom" Height="55" />
+        <Button Content="SAVE" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="4" HorizontalAlignment="Stretch" Margin="0,0,20,0" VerticalAlignment="Bottom" Command="{Binding CmdSave}" Height="55"/>
+        <Button Content="Add" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="4" HorizontalAlignment="Stretch" Margin="10,0,20,0" Command="{Binding CmdAdd}" VerticalAlignment="Bottom" Height="55"/>
+        <Button Content="Remove" Grid.Column="5" Grid.ColumnSpan="1" Grid.RowSpan="4" HorizontalAlignment="Stretch" Margin="20,0,20,0" Command="{Binding CmdRemove}" VerticalAlignment="Bottom" Height="55"/>
+
+        <Button Style="{StaticResource MyButtonStyle}" Command="{Binding CmdNext}" Grid.Column="5" Grid.Row="5" Grid.ColumnSpan="2"/>
+        <Button Style="{StaticResource MyButtonStyle}" Command="{Binding CmdBack}" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</UserControl>
